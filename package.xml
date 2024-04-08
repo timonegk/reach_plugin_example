@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>reach_plugin_example</name>
+  <version>1.0.0</version>
+  <description>A simple example of a reach plugin that fails</description>
+
+  <maintainer email="timon.engelke@online.de">Timon Engelke</maintainer>
+  <author email="timon.engelke@online.de">Timon Engelke</author>
+
+  <license>Apache 2.0</license>
+
+  <depend>reach</depend>
+  <depend>boost_plugin_loader</depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
