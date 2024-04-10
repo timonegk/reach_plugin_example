@@ -13,7 +13,7 @@ target_include_directories(${PROJECT_NAME}_evaluator PUBLIC $<BUILD_INTERFACE:${
                                                   $<INSTALL_INTERFACE:include>)
 target_link_libraries(${PROJECT_NAME}_evaluator PUBLIC reach::reach)
 
-add_library(${PROJECT_NAME} SHARED src/factory.cpp)
+add_library(${PROJECT_NAME} SHARED src/plugin.cpp)
 target_link_libraries(${PROJECT_NAME} PUBLIC ${PROJECT_NAME}_evaluator)
 
 install(TARGETS ${PROJECT_NAME} ${PROJECT_NAME}_evaluator DESTINATION lib)
