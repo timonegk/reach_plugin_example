@@ -6,13 +6,16 @@ find_package(boost_plugin_loader REQUIRED)
 find_package(ament_cmake REQUIRED)
 
 add_library(
-  ${PROJECT_NAME} SHARED
+  ${PROJECT_NAME}_evaluator SHARED
   src/evaluator.cpp
 )
-target_include_directories(${PROJECT_NAME} PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+target_include_directories(${PROJECT_NAME}_evaluator PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
                                                   $<INSTALL_INTERFACE:include>)
-target_link_libraries(${PROJECT_NAME} PUBLIC reach::reach)
+target_link_libraries(${PROJECT_NAME}_evaluator PUBLIC reach::reach)
 
-install(TARGETS ${PROJECT_NAME} DESTINATION lib)
+add_library(${PROJECT_NAME} SHARED src/factory.cpp)
+target_link_libraries(${PROJECT_NAME} PUBLIC ${PROJECT_NAME}_evaluator)
+
+install(TARGETS ${PROJECT_NAME} ${PROJECT_NAME}_evaluator DESTINATION lib)
 
 ament_package()
